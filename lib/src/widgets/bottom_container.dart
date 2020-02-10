@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import '../constants/constants.dart';
 
-const Color bottomContainerColor = Color(0xFFEB1555);
-const double bottomContainerHeight = 80.0;
+class BottomButton extends StatelessWidget {
+  final Function onPress;
+  final String title;
 
-class BottomContainer extends StatelessWidget {
+  BottomButton({@required this.onPress, this.title});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      margin: EdgeInsets.only(top: 10.0),
-      height: bottomContainerHeight,
-      color: bottomContainerColor,
-      child: Center(
-        child: Text(
-          'CALCULATE YOUR BMI',
-          style: TextStyle(fontSize: 20.0),
+    return GestureDetector(
+      onTap: onPress,
+      child: Container(
+        margin: EdgeInsets.only(top: 10.0),
+        padding: EdgeInsets.only(bottom: 20.0),
+        height: kBottomContainerHeight,
+        color: kBottomContainerColor,
+        child: Center(
+          child: Text(
+            title,
+            style: kBottomButton,
+          ),
         ),
       ),
     );
